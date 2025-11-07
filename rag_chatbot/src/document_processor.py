@@ -6,12 +6,12 @@ from typing import List, Dict
 from pathlib import Path
 import PyPDF2
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from config import Config
+from rag_chatbot.src.config import Config
 
 
 class DocumentProcessor:
     """Process financial documents for RAG system"""
-    
+     
     def __init__(self):
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=Config.CHUNK_SIZE,
@@ -133,13 +133,13 @@ class DocumentProcessor:
 
 
 # Example usage
-if __name__ == "__main__":
-    processor = DocumentProcessor()
+# if __name__ == "__main__":
+#     processor = DocumentProcessor()
     
-    # Process all documents in the data directory
-    documents = processor.process_directory()
+#     # Process all documents in the data directory
+#     documents = processor.process_directory()
     
-    if documents:
-        print(f"\nSample chunk:")
-        print(documents[0]["content"][:300])
-        print(f"\nMetadata: {documents[0]['metadata']}")
+#     if documents:
+#         print(f"\nSample chunk:")
+#         print(documents[0]["content"][:300])
+#         print(f"\nMetadata: {documents[0]['metadata']}")

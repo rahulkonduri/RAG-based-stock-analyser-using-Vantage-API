@@ -6,7 +6,7 @@ import requests
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 import pandas as pd
-from config import Config
+# from rag_chatbot.src.config import Config
 import time
 
 
@@ -435,7 +435,13 @@ if __name__ == "__main__":
     print("=" * 60)
     overview = fetcher.get_market_overview()
     for index, data in overview.items():
-        print(f"{index}: ${data['price']:.2f} ({data.get('change_percent', 0):.2f}%)")
+    #     print(f"{index}: ${data['price']:.2f} ({data.get('change_percent', 0):.2f}%)")
+        price= data.get("price") or 0
+        change= data.get("change_percent") or 0
+        
+        print ({"price": price, "change":change})
+        # print(f"{index}: ${ (data.get('price') or 0):.2f } ({ (data.get('change_percent') or 0):.2f}%)")
+
     
     print("\n" + "=" * 60)
     print("Testing Crypto (CoinGecko - No API key)")
